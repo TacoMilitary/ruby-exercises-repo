@@ -11,3 +11,13 @@ receipt: |
 
  TIP PERCENTAGE: {{percent}}%
  ==========
+
+bill_ask: 'How much was your bill? ($)'
+
+zero_bill_error: 'You must input an amount over zero!'
+
+tip_ask: 'How much would you like to tip, if at all? (%)'
+
+negative_tip_error: 'The tip percentage must be positive!'
+
+invalid_error: 'Invalid input!'
