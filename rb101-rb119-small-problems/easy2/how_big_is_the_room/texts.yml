@@ -1,0 +1,9 @@
+welcome: 'Hello! This program will calculate the area of a room in meters and feet.'
+
+length_ask: 'What is the length of the room? (meters)'
+width_ask: 'What is the width of the room? (meters)'
+
+result_screen: |
+ The area of your room is:
+  #{meters}m
+  #{feet}ft
