@@ -50,8 +50,8 @@ def display_results(area_meters, area_feet)
   divide_screen
   result_text = fill_placeholders(
     get_text('result_screen'),
-    'meters' => area_meters.truncate(2),
-    'feet' => area_feet.truncate(2)
+    'meters' => area_meters.round(2),
+    'feet' => area_feet.round(2)
   )
 
   puts result_text
