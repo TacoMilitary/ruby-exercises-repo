@@ -1,0 +1,10 @@
+welcome: 'Hello! This program will calculate the area of a room in feet, inches, and centimeters..'
+
+length_ask: 'What is the length of the room? (feet)'
+width_ask: 'What is the width of the room? (feet)'
+
+result_screen: |
+ The area of your room is:
+  #{feet}ft
+  #{inches}in
+  #{centimeters}cm
