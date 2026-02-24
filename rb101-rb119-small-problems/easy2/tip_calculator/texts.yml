@@ -1,0 +1,13 @@
+welcome: |
+ Welcome to the tip calulator!
+ I will take a bill amount and a percentage you'd like to tip,
+ then I will tell you how much you'd be tipping and paying overall.
+
+receipt: |
+ RECEIPT:
+ ==========
+ TIP: {{tip}}
+ TOTAL: {{total}}
+
+ TIP PERCENTAGE: {{percent}}%
+ ==========
