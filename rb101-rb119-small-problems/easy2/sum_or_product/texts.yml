@@ -3,8 +3,23 @@ welcome: 'Hi! This program will perform an operation
 
 integer_prompt: 'Please input an integer greater than 0!'
 
+operation_prompt: |
+ What operation would you like to perform?
+  (factorial)? - of your chosen number?
+  (sum)? - of numbers 1 to your chosen number?
+
 not_a_number: 'That is not a number!'
 
 decimal_error: 'Please input whole numbers only!'
 
-bad_integer_error: 'Thiat is not an integer greater than 0!'
+empty_input: 'You must input text!'
+
+no_operation: 'You must choose from one of the listed operations!'
+
+bad_integer_error: 'That is not an integer greater than 0!'
+
+sum_result: |
+ The sum of all numbers between 1 and {{integer}} is: [{{result}}]
+
+factorial_result: |
+ The factorial of {{integer}} is: [{{result}}]
