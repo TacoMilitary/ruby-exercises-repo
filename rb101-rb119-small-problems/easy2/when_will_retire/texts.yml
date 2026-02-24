@@ -1,0 +1,15 @@
+welcome: |
+ I'm going to tell you when you're going to be retiring!
+ Just give me your age and the age you'd like to retire at.
+
+age_ask: 'How old are you now?'
+
+retire_ask: 'What age would you like to retire?'
+
+deduction: |
+ Since it is {{year}}, you will retire in {{retire}}.
+ There are {{time}} years to go!
+
+age_error: 'You must input a real age!'
+
+younger_retire_error: 'Your retire age must be older than your current age!'
