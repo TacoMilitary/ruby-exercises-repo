@@ -103,7 +103,7 @@ def operation_and_error(user_input)
   if user_input.empty?
     error = fetch_txt('empty_input')
   elsif operation_name
-    operation_name = found_operation.to_s
+    operation_name = operation_name.to_s
   else
     error = fetch_txt('no_operation')
   end
