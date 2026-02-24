@@ -1,0 +1,10 @@
+welcome: 'Hi! This program will perform an operation 
+ of your choosing on a number of your choosing!.'
+
+integer_prompt: 'Please input an integer greater than 0!'
+
+not_a_number: 'That is not a number!'
+
+decimal_error: 'Please input whole numbers only!'
+
+bad_integer_error: 'Thiat is not an integer greater than 0!'
