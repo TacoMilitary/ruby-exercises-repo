@@ -1,1 +1,13 @@
 welcome: 'Hello! This program will ask you for a list of numbers!'
+
+number_prompt: 'Please enter the {{time}} number.'
+
+default_num_ask: 'Please enter a number.'
+
+invalid_input: 'That is not a number!'
+
+decimal_error: 'There are too many decimals!'
+
+num_not_within: 'The number {{num}} does not appear in {{array}}.'
+
+num_within: 'The number {{num}} appears in {{array}}.'
