@@ -1,0 +1,9 @@
+welcome: 'Hi! This program will count the number of characters in a text provided!'
+
+ask_for_string: 'Please input a text! It may be a story, a sentence, or just a word.'
+
+empty_error: 'There is nothing there!'
+
+one_character: 'There is 1 character in "{{text}}".'
+
+multiple_characters: 'There are {{count}} characters in "{{text}}".'
