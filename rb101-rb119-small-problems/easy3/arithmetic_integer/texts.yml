@@ -1,0 +1,15 @@
+welcome: |
+ Hello! This program will calculate the result of 
+ various operations on two numbers, that you give it!
+
+first_int_ask: 'Please enter the first integer!'
+
+second_int_ask: 'Please enter the second integer!'
+
+non_num_error: 'That is not a number!'
+
+float_input_error: 'That is a float number! Please only input whole numbers!'
+
+negative_error: 'That is not a positive number!'
+
+operation_result_text: '{{number1}} {{operator}} {{number2}} = {{op_result}}'
