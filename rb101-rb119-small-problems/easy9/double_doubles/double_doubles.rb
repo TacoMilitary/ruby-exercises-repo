@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 def double_number?(number)
-  digits = number.to_s.chars
+  str_number = number.to_s
 
-  return false if digits.length.odd?
+  return false if str_number.length.odd?
 
-  middle_index = digits.length / 2
+  middle_index = str_number.length / 2
 
-  digits[0...middle_index] == digits[middle_index..-1]
+  str_number[0...middle_index] == str_number[middle_index..-1]
 end
 
 def twice(number)
