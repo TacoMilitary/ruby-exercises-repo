@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 def double_number?(number)
-  digits = number.digits
-  middle_index = digits.length / 2 - 1
+  digits = number.to_s.chars
 
-  digits[0..middle_index] == digits[(middle_index + 1)..-1]
+  return false if digits.length.odd?
+
+  middle_index = digits.length / 2
+
+  digits[0...middle_index] == digits[middle_index..-1]
 end
 
 def twice(number)
-  return_number = number
-  return_number *= 2 if number.digits.length.odd? || !double_number?(number)
-
-  return_number
+  double_number?(number) ? number : number * 2
 end
 
 p twice(37) == 74
