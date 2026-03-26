@@ -5,8 +5,7 @@ input_hash = { a: [1, 2, 3], b: [4, 5, 6] }
 
 def non_mutating_transform(hash)
   hash.transform_values do |value|
-    return value unless value.is_a? Array
-    Array.new(value.size, 0)
+    value.is_a?(Array) ? Array.new(value.size, 0) : value
   end
 end
 
