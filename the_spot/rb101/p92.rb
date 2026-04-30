@@ -18,7 +18,7 @@ def validate_game_config(name, rounds, difficulty, use_defaults)
   elsif name.empty? || difficulty.empty? || rounds < 1
     # puts ERROR_MESSAGE
     # return
-		raise(StandardError, ERROR_MESSAGE)
+	  raise(StandardError, ERROR_MESSAGE)
   end
 
   output_play_message(name, rounds, difficulty)
