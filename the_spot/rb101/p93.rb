@@ -2,14 +2,22 @@
 
 PLCHOLD_INFO = 'Unknown'
 
+def valid_string(string)
+  string.is_a?(String) && !string.empty? ? string : false
+end
+
+def valid_age(age)
+  age.is_a?(Integer) && age.positive? ? age : false
+end
+
 def normalize(name, age, email)
   {
-    name: name || PLCHOLD_INFO,
-    age: age || PLCHOLD_INFO,
-    email: email || PLCHOLD_INFO
+    name: valid_string(name) || PLCHOLD_INFO,
+    age: valid_age(age) || PLCHOLD_INFO,
+    email: valid_string(email) || PLCHOLD_INFO
   }
 end
 
-p normalize('Marcy', nil, nil)
+p normalize('Marcy', nil, '')
 
-p normalize(nil, nil, 'best.user@gmail.com')
+p normalize(nil, -1, 'best.user@gmail.com')
