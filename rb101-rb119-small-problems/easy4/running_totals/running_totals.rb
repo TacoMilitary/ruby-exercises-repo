@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def running_total(numbers)
-  numbers.map.with_index { |_, index| numbers[0..index].sum }
+  numbers.map.with_index { |_, index| numbers[..index].sum }
 end
 
 p running_total([2, 5, 13]) == [2, 7, 20]
