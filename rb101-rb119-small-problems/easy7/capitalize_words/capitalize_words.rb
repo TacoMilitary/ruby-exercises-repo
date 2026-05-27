@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 def word_cap(sentence)
-  return sentence if sentence.empty?
   sentence.split.map!(&:capitalize).join ' '
 end
 
