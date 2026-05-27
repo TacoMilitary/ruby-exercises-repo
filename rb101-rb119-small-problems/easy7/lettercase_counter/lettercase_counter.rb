@@ -5,7 +5,7 @@ def letter_case_count(string)
   lower_count = string.count 'a-z'
   non_alphabet = string.length - (upper_count + lower_count)
 
-  {uppercase: upper_count, lowercase: lower_count, neither: non_alphabet}
+  { uppercase: upper_count, lowercase: lower_count, neither: non_alphabet }
 end
 
 p letter_case_count('abCdef 123') == { lowercase: 5, uppercase: 1, neither: 4 }
