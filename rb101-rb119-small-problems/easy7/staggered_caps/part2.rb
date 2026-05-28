@@ -2,6 +2,7 @@
 
 ALPHABET_NOCASE = (('A'..'Z').to_a + ('a'..'z').to_a).freeze
 
+=begin
 def staggered_case(string)
   upper_next = true
   string.each_char.with_object(''.dup) do |chr, stag_string|
@@ -12,6 +13,19 @@ def staggered_case(string)
 
     stag_string << chr
   end
+end
+=end
+
+def staggered_case(string)
+  upper_next = true
+  characters = string.chars.each do |chr|
+    if ALPHABET_NOCASE.include?(chr)
+      chr = (upper_next ? chr.upcase! : chr.downcase!)
+      upper_next = !upper_next
+    end
+  end
+
+  characters.join
 end
 
 p staggered_case('I Love Launch School!') == 'I lOvE lAuNcH sChOoL!'
