@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-CONSONANTS = ('a'..'z').reject { |letter| 'aeiou'.include?(letter) }.freeze
+CONSONANTS = (('a'..'z').to_a - 'aeiou'.chars).freeze
 
 def consonant?(chr)
   CONSONANTS.include? chr.downcase
