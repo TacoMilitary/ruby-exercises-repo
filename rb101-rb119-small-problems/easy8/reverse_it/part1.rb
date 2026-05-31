@@ -8,9 +8,8 @@ end
 
 def reverse_sentence(sentence)
   words = sentence.split
-  return '' unless words.any? { |word| /[^\s]/.match word }
-
   words_count = words.size
+  return '' if words_count.zero?
   return sentence if words_count <= 1
 
   mid_index = words_count / 2 - 1
