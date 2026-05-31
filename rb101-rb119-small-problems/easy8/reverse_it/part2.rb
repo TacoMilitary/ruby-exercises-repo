@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def reverse_words(sentence)
-  words = sentence.split.map { |word| word.size >= 5 ? word.reverse : word }
+  words = sentence.split.each { |word| word.reverse! if word.size >= 5 }
   words.join ' '
 end
 
