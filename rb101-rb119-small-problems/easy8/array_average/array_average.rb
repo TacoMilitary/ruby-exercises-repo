@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def average(numbers)
-  numbers.reduce(:+) / numbers.size
+  numbers.reduce(:+).fdiv numbers.size
 end
 
 puts average([1, 6]) == 3 # integer division: (1 + 6) / 2 -> 3
