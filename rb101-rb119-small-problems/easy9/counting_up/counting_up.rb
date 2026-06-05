@@ -2,7 +2,7 @@
 
 def sequence(upto_number)
   return [0] if upto_number.zero?
-  upto_number.positive? ? (1..upto_number).to_a : (upto_number..-1).to_a.reverse
+  upto_number.positive? ? (*1..upto_number) : (*upto_number..-1).reverse
 end
 
 p sequence(5) == [1, 2, 3, 4, 5]
