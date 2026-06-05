@@ -7,14 +7,10 @@ def anagram_in_group?(word, group)
 end
 
 def group_anagrams(words)
-  anagram_groups = {}
+  anagram_groups = Hash.new { |h, k| h[k] = [] }
   words.each do |word|
     group_key = word.chars.sort.join.to_s
-    if anagram_groups[group_key]
-      anagram_groups[group_key] << word
-    else
-      anagram_groups[group_key] = [word]
-    end
+    anagram_groups[group_key] << word
   end
   anagram_groups.values
 end
