@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 def sequence(upto_number)
-  upto_number = 1 unless upto_number > 0
-  (1..upto_number).to_a
+  upto_number > 0 ? (1..upto_number).to_a : [1]
 end
 
 p sequence(5) == [1, 2, 3, 4, 5]
