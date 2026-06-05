@@ -15,8 +15,13 @@ def group_anagrams(words)
   anagram_groups.values
 end
 
+def group_anagrams_refactor(words)
+  words.group_by { |word| word.chars.sort }.values.reject { |group| group.size <= 1 }
+end
+
 words = %w[demo none tied evil dome mode live
            fowl veil wolf diet vile edit tide
            flow neon]
 
 p group_anagrams(words)
+p group_anagrams_refactor(words)
