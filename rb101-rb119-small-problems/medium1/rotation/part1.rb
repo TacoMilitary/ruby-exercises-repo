@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 def rotate_array(array)
-  rotated_array = array.dup
-  rotated_array.push rotated_array.shift
+  array[1..-1] << array.first
 end
 
 p rotate_array([7, 3, 5, 2, 9, 1]) == [3, 5, 2, 9, 1, 7]
