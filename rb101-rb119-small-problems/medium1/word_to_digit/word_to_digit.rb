@@ -1,9 +1,9 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 DIGIT_WORDS = %w[zero one two three four five six seven eight nine].freeze
 
 def word_to_digit(sentence)
-  DIGIT_WORDS.each_with_index { |word, digit| sentence.gsub!(word, digit.to_s) }
+  DIGIT_WORDS.each_with_index { |word, digit| sentence.gsub!(/\b#{word}\b/i, digit.to_s) }
   sentence
 end
 
