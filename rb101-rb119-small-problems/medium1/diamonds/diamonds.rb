@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-def diamond_row_size(row, size, middle_row)
+def calc_row(row, size, middle_row)
   distance_from_middle = (middle_row - row).abs
   size - distance_from_middle * 2
 end
@@ -8,7 +8,7 @@ end
 def diamond(size, fill: true)
   middle_row = (size / 2).next
   1.upto(size) do |row|
-    row_size = diamond_row_size(row, size, middle_row)
+    row_size = calc_row(row, size, middle_row)
     row_text = ('*' * row_size).center(size)
     puts row_text
   end
