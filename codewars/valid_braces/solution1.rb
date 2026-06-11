@@ -22,3 +22,19 @@ def valid_braces(braces)
 
   opened_braces.empty?
 end
+
+p valid_braces('()') == true
+p valid_braces('[]') == true
+p valid_braces('{}') == true
+p valid_braces('(){}[]') == true
+p valid_braces('([{}])') == true
+p valid_braces('(}') == false
+p valid_braces('[(])') == false
+p valid_braces('({})[({})]') == true
+p valid_braces('(})') == false
+p valid_braces('(({{[[]]}}))') == true
+p valid_braces('{}({})[]') == true
+p valid_braces(')(}{][') == false
+p valid_braces('())({}}{()][][') == false
+p valid_braces('(((({{') == false
+p valid_braces('}}]]))}])') == false
