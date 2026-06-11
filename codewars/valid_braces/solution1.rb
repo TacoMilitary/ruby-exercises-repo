@@ -1,5 +1,7 @@
 # frozen_string_literal: false
 
+OPEN_BRACES_MAP = {}
+
 def valid_braces(braces)
   opening_types = ['(', '[', '{']
   closing_types = [')', ']', '}']
