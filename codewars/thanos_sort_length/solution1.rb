@@ -2,11 +2,14 @@
 
 def thanos_sort(arr)
   result = arr
-  while result != result.sort
+  loop do
     middle = (result.size / 2.0).ceil - 1
-    result = result[..middle]
+    second_half = result[middle..]
+    return second_half.size if second_half == second_half.sort
+    first_half = result[..middle]
+    return first_half.size if first_half == first_half.sort
+    result = first_half
   end
-  result.size
 end
 
 p thanos_sort([9, 8, 7, 1, 2, 3]), 3
