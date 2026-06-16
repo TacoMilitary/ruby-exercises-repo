@@ -1,14 +1,9 @@
 # frozen_string_literal: true
 
-def fibonacci(n)
-  (3..n).reduce([1, 1]) { |f| [f[-1], f.sum] }.last
-end
+LAST_DIGITS = (3..60).reduce([0, 1, 1]) { |f| f << f[-2] + f[-1] }.map { |n| n % 10 }.freeze
 
 def fibonacci_last(n)
-  fn = fibonacci n
-  # fn.digits.first
-  fn.to_s[-1].to_i
-  # fn % 10
+  LAST_DIGITS[n % 60]
 end
 
 p fibonacci_last(15)        == 0 # -> 0  (the 15th Fibonacci number is 610)
