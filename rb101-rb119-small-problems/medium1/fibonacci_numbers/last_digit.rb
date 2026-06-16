@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'benchmark'
-
 def fibonacci(n)
   (3..n).reduce([1, 1]) { |f| [f[-1], f.sum] }.last
 end
