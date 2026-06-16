@@ -4,6 +4,8 @@ TO_PERCENT = 100.0
 UPPERCASE_LETTERS = 'A'..'Z'
 LOWERCASE_LETTERS = 'a'..'z'
 
+=begin
+# Solution 1
 def letter_percentages(str)
   chr_count = str.size.to_f
   return 0 if chr_count.zero?
@@ -14,6 +16,7 @@ def letter_percentages(str)
   ratios
 end
 
+# Solution 2
 def letter_percentages(str)
   return 0 if str.empty?
   ratios = { uppercase: 0, lowercase: 0, neither: 0 }
@@ -26,6 +29,15 @@ def letter_percentages(str)
   end
   chr_count = str.size.to_f
   ratios.each { |key, count| ratios[key] = count / chr_count * TO_PERCENT }
+end
+=end
+
+# Solution 3 (recreated)
+def letter_percentages(str)
+  chr_count = str.size.to_f
+  return 0 if chr_count.zero?
+  ratios = { uppercase: 'A-Z', lowercase: 'a-z', neither: '^a-zA-Z' }
+  ratios.transform_values { (str.count(_1) / chr_count * TO_PERCENT).round(1) }
 end
 
 p letter_percentages('abCdef 123') == { lowercase: 50.0, uppercase: 10.0, neither: 40.0 }
