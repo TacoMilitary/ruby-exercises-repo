@@ -1,17 +1,30 @@
 # frozen_string_literal: true
 
-SQRT5 = Math.sqrt(5)
-SQRT5_PLUS = SQRT5 + 1
-SQRT5_MINUS = 1 - SQRT5
-GOLDEN_RATIO = SQRT5_PLUS / 2.0
+=begin
+def fibonacci(target)
+  f = [1, 1]
+  3.upto(target) { f[-2], f[-1] = f[-1], f.sum }
+  f[-1]
+end
+=end
 
-def fibonacci(n)
-  sequence = [0, 1]
-  (1..n).reduce(0) do |iteration|
-
+=begin
+def fibonacci(target)
+  return target if '01'[target.to_s]
+  second_last_n = 0
+  (2..target).reduce(1) do |last_n, _|
+    n = second_last_n + last_n
+    second_last_n = last_n
+    n
   end
 end
+=end
 
-fibonacci(20) == 6765
-fibonacci(100) == 354224848179261915075
+def fibonacci(n)
+  (3..n).reduce([1, 1]) { |f| [f[-1], f.sum] }.last
+end
+
+p fibonacci(3) == 2
+p fibonacci(20) == 6765
+p fibonacci(100) == 354224848179261915075
 fibonacci(100_001) # => 4202692702.....8285979669707537501
