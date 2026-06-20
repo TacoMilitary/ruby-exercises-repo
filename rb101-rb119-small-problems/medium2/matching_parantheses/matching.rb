@@ -12,7 +12,7 @@ def balanced?(text)
   only_parantheses.each_char do |char|
     case char
     when OPENING_PARANTHESE then unclosed_parantheses += 1
-    when CLOSING_PARANTHESE
+    else
       return false if unclosed_parantheses.zero?
 
       unclosed_parantheses -= 1
