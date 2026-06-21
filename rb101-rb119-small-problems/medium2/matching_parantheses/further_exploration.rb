@@ -8,7 +8,7 @@ DELIMITERS = {
   curlys: {open: '{', close: '}'}
 }
 
-EXCLUDE_NON_DELIMITERS = "^()[]{}''\"\""
+EXCLUDE_NON_DELIMITERS = "^()[]{}'\""
 
 def delimiter?(char)
   DELIMITERS.values.any? { |delimiter| delimiter.value? char }
