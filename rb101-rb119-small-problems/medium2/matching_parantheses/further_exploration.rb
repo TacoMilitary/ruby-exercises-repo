@@ -8,7 +8,6 @@ DELIMITERS = {
   curlys: {open: '{', close: '}'}
 }
 
-DELIMITER_REGEX = /(\(\)|''|""|\[\]|{})/
 EXCLUDE_NON_DELIMITERS = "^()[]{}''\"\""
 
 def delimiter?(char)
@@ -29,6 +28,30 @@ def is_closing?(char, delimiter_pair = nil)
   delimiter_pair[:close] == char
 end
 
+# Solution 2
+
+def balanced?(text)
+  only_delimiters = text.delete(EXCLUDE_NON_DELIMITERS).chars
+  only_delimiters.each_with_object([]) do |delim, unclosed_list|
+    delim_pair = find_pair delim
+    twin_pair = delim_pair[:open] == delim_pair[:close]
+    is_expected = unclosed_list.last == delim
+    if twin_pair && is_expected
+      unclosed_list.pop
+    elsif is_opening?(delim, delim_pair)
+      unclosed_list.push delim_pair[:close]
+    else
+      return false if unclosed_list.empty? || !is_expected
+
+      unclosed_list.pop
+    end
+  end.empty?
+end
+
+# Solution 1
+=begin
+DELIMITER_REGEX = /(\(\)|''|""|\[\]|{})/
+
 def balanced?(text)
   remaining_delimiters = text.delete EXCLUDE_NON_DELIMITERS
   loop do
@@ -38,6 +61,7 @@ def balanced?(text)
     remaining_delimiters = removed_last_pair
   end
 end
+=end
 
 p balanced?('What (is) this?') == true
 p balanced?('What is) this?') == false
