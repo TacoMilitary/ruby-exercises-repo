@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Solution 1
+=begin
 def sum_square_difference(range)
   square_sum = 0
   num_sum = 0
@@ -9,6 +11,11 @@ def sum_square_difference(range)
   end
 
   (square_sum - num_sum**2).abs
+end
+=end
+
+def sum_square_difference(range)
+  (1..range).sum.abs2 - (1..range).map(&:abs2).sum
 end
 
 p sum_square_difference(3) == 22
