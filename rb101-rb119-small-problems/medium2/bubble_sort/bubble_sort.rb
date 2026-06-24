@@ -4,6 +4,8 @@ def greater_than(first, second)
   (first <=> second) == 1
 end
 
+# Solution 1
+=begin
 def bubble_sort!(array)
   final_index = array.size - 2
   loop do
@@ -17,6 +19,27 @@ def bubble_sort!(array)
     break unless changes_made
   end
 
+  array
+end
+=end
+
+# Solution 2
+
+def sort_pass!(array)
+  stop_at = array.size - 1
+  index = 0
+  until index >= stop_at
+    if greater_than(array[index], array[index.next])
+      array[index], array[index.next] = array[index.next], array[index] 
+    end
+    index += 1
+  end
+  array
+end
+
+def bubble_sort!(array)
+  sorted = array.sort
+  sort_pass!(array) until array == sorted
   array
 end
 
