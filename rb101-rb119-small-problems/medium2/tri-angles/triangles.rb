@@ -6,6 +6,7 @@ def valid_triangle?(angles)
   true
 end
 
+=begin
 def triangle(*angles)
   return :invalid unless valid_triangle?(angles)
   if angles.include? 90
@@ -15,6 +16,16 @@ def triangle(*angles)
   else
     :acute
   end
+end
+=end
+
+def triangle(*angles)
+  return :invalid unless valid_triangle?(angles)
+  angles.each do |deg|
+    return :right if deg == 90
+    return :obtuse if deg > 90
+  end
+  :acute
 end
 
 p triangle(60, 70, 50) == :acute
