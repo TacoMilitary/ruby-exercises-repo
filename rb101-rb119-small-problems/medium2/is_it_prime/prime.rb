@@ -2,7 +2,7 @@
 
 def is_prime(candidate)
   return true if candidate == 2
-  return false if candidate.even? || candidate.negative?
+  return false if candidate.even? || candidate <= 1
   square_root = candidate**0.5
   (3..square_root).step(2) { |odd_number| return false if (candidate % odd_number).zero? }
   true
