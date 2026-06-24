@@ -6,6 +6,7 @@ def valid_triangle?(side_lengths)
   true
 end
 
+=begin
 def triangle(*side_lengths)
   return :invalid unless valid_triangle?(side_lengths)
   case side_lengths.tally.values.max
@@ -13,6 +14,12 @@ def triangle(*side_lengths)
   when 2 then :isosceles 
   else :scalene
   end
+end
+=end
+
+def triangle(*side_lengths)
+  return :invalid unless valid_triangle?(side_lengths)
+  [:scalene, :isosceles, :equilateral][side_lengths.tally.values.max - 1]
 end
 
 p triangle(3, 3, 3) == :equilateral
