@@ -6,14 +6,15 @@ class Banner
   BANNER_VERTICAL_BORDER = '|'
   BANNER_HORIZONTAL_BORDER = '-'
 
+  attr_reader :raw_text, :display_text
+
   def initialize(message)
     self.raw_text = message
-    padding = ' ' * HORIZONTAL_PADDING
-    self.padded_text = "#{padding}#{raw_text}#{padding}"
+    self.display_text = format_banner.freeze
   end
 
   def to_s
-    [horizontal_rule, empty_line, message_line, empty_line, horizontal_rule].join "\n"
+    display_text
   end
 
   def display
@@ -22,21 +23,30 @@ class Banner
 
   private
 
-  attr_accessor :padded_text
-  attr_accessor :raw_text
+  attr_writer :raw_text, :display_text
 
-  def horizontal_rule
-    border = BANNER_HORIZONTAL_BORDER * padded_text.size
+  def format_banner
+    padding = ' ' * HORIZONTAL_PADDING
+    padded_text = "#{padding}#{raw_text}#{padding}"
+    text_size = padded_text.size
+
+    vertical_border = horizontal_rule(text_size)
+    vertical_padding = empty_line(text_size)
+    [vertical_border, vertical_padding, message_line(padded_text), vertical_padding, vertical_border].join "\n"
+  end
+
+  def horizontal_rule(text_size)
+    border = BANNER_HORIZONTAL_BORDER * text_size
     "#{BANNER_CORNER}#{border}#{BANNER_CORNER}"
   end
 
-  def empty_line
-    empty_space = ' ' * padded_text.size
+  def empty_line(text_size)
+    empty_space = ' ' * text_size
     "#{BANNER_VERTICAL_BORDER}#{empty_space}#{BANNER_VERTICAL_BORDER}"
   end
 
-  def message_line
-    "#{BANNER_VERTICAL_BORDER}#{padded_text}#{BANNER_VERTICAL_BORDER}"
+  def message_line(text_to_display)
+    "#{BANNER_VERTICAL_BORDER}#{text_to_display}#{BANNER_VERTICAL_BORDER}"
   end
 end
 
