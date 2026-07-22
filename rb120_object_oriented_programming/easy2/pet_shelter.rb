@@ -30,15 +30,17 @@ end
 class Shelter
   def initialize
     @past_adopters = []
+    @unadopted_pets = []
   end
 
-  def add_new_owner(new_owner)
-    @past_adopters.push(new_owner).uniq!
+  def adopt(new_owner)
+    pet = @unadopted_pets.delete_at(rand(0..number_of_pets))
+    new_owner.give_pet pet
+    add_new_owner new_owner
   end
 
-  def adopt(new_owner, pet)
-    new_owner.give_pet(pet)
-    add_new_owner(new_owner)
+  def add_new_pet(pet)
+    @unadopted_pets << pet
   end
 
   def print_adoptions
@@ -48,27 +50,48 @@ class Shelter
       puts "\n"
     end
   end
-end
 
-butterscotch = Pet.new('cat', 'Butterscotch')
-pudding      = Pet.new('cat', 'Pudding')
-darwin       = Pet.new('bearded dragon', 'Darwin')
-kennedy      = Pet.new('dog', 'Kennedy')
-sweetie      = Pet.new('parakeet', 'Sweetie Pie')
-molly        = Pet.new('dog', 'Molly')
-chester      = Pet.new('fish', 'Chester')
+  def print_remaining_pets
+    puts "The Animal Shelter has the following unadopted pets:"
+    puts @unadopted_pets
+    puts "\n"
+  end
+
+  def number_of_pets
+    @unadopted_pets.size
+  end
+
+  private
+
+  def add_new_owner(new_owner)
+    @past_adopters.push(new_owner).uniq!
+  end
+end
 
 phanson = Owner.new('P Hanson')
 bholmes = Owner.new('B Holmes')
 
 shelter = Shelter.new
-shelter.adopt(phanson, butterscotch)
-shelter.adopt(phanson, pudding)
-shelter.adopt(phanson, darwin)
-shelter.adopt(bholmes, kennedy)
-shelter.adopt(bholmes, sweetie)
-shelter.adopt(bholmes, molly)
-shelter.adopt(bholmes, chester)
+
+[Pet.new('cat', 'Butterscotch'),
+Pet.new('cat', 'Pudding'),
+Pet.new('bearded dragon', 'Darwin'),
+Pet.new('dog', 'Kennedy'),
+Pet.new('parakeet', 'Sweetie Pie'),
+Pet.new('dog', 'Molly'),
+Pet.new('fish', 'Chester')].each { shelter.add_new_pet(_1) }
+
+shelter.print_remaining_pets
+shelter.adopt(phanson)
+shelter.print_remaining_pets
 shelter.print_adoptions
-puts "#{phanson.name} has #{phanson.number_of_pets} adopted pets."
-puts "#{bholmes.name} has #{bholmes.number_of_pets} adopted pets."
+
+# shelter.adopt(phanson, pudding)
+# shelter.adopt(phanson, darwin)
+# shelter.adopt(bholmes, kennedy)
+# shelter.adopt(bholmes, sweetie)
+# shelter.adopt(bholmes, molly)
+# shelter.adopt(bholmes, chester)
+# shelter.print_adoptions
+# puts "#{phanson.name} has #{phanson.number_of_pets} adopted pets."
+# puts "#{bholmes.name} has #{bholmes.number_of_pets} adopted pets."
