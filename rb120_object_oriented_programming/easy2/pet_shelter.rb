@@ -28,9 +28,18 @@ class Owner
 end
 
 class Shelter
+  STARTING_PETS = [Pet.new('cat', 'Butterscotch'),
+                   Pet.new('cat', 'Pudding'),
+                   Pet.new('bearded dragon', 'Darwin'),
+                   Pet.new('dog', 'Kennedy'),
+                   Pet.new('parakeet', 'Sweetie Pie'),
+                   Pet.new('dog', 'Molly'),
+                   Pet.new('fish', 'Chester')
+                  ]
+
   def initialize
     @past_adopters = []
-    @unadopted_pets = []
+    @unadopted_pets = STARTING_PETS.dup.map!(&:dup)
   end
 
   def adopt(new_owner)
@@ -73,13 +82,7 @@ bholmes = Owner.new('B Holmes')
 
 shelter = Shelter.new
 
-[Pet.new('cat', 'Butterscotch'),
-Pet.new('cat', 'Pudding'),
-Pet.new('bearded dragon', 'Darwin'),
-Pet.new('dog', 'Kennedy'),
-Pet.new('parakeet', 'Sweetie Pie'),
-Pet.new('dog', 'Molly'),
-Pet.new('fish', 'Chester')].each { shelter.add_new_pet(_1) }
+
 
 shelter.print_remaining_pets
 shelter.adopt(phanson)
