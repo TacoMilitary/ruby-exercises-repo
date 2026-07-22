@@ -32,9 +32,13 @@ class Shelter
     @past_adopters = []
   end
 
+  def add_new_owner(new_owner)
+    @past_adopters.push(new_owner).uniq!
+  end
+
   def adopt(new_owner, pet)
     new_owner.give_pet(pet)
-    @past_adopters.push(new_owner).uniq!
+    add_new_owner(new_owner)
   end
 
   def print_adoptions
