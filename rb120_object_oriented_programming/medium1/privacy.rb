@@ -7,15 +7,25 @@ class Machine
     self.flip_switch(:off)
   end
 
+  def status
+    "The machine is #{switch}!"
+  end
+
   private
 
-  attr_writer :switch
+  attr_accessor :switch
 
   def flip_switch(desired_state)
     self.switch = desired_state
   end
-
-  def switch
-    @switch
-  end
 end
+
+machine = Machine.new
+machine.start
+machine.stop
+
+puts machine.status
+
+machine.start
+
+puts machine.status
