@@ -2,7 +2,7 @@ class Card
   include Comparable
 
   RANK_COMPARE_ORDER = [*(2..10), 'Jack', 'Queen', 'King', 'Ace'].freeze
-  SUIT_COMPARE_ORDER = ['Diamonds', 'Clubs', 'Hearts', 'Spades'].freeze
+  SUIT_COMPARE_ORDER = %w[Diamonds Clubs Hearts Spades].freeze
 
   attr_reader :rank, :suit
 
@@ -11,11 +11,11 @@ class Card
     @suit = suit
   end
 
-  def <=>(other_card)
-    if suit == other_card.suit
-      rank_compare_value <=> other_card.rank_compare_value
+  def <=>(other)
+    if suit == other.suit
+      rank_compare_value <=> other.rank_compare_value
     else
-      suit_compare_value <=> other_card.suit_compare_value
+      suit_compare_value <=> other.suit_compare_value
     end
   end
 
@@ -26,7 +26,7 @@ class Card
   protected
 
   def rank_compare_value
-    RANK_COMPARE_ORDER.index(rank) 
+    RANK_COMPARE_ORDER.index(rank)
   end
 
   def suit_compare_value
