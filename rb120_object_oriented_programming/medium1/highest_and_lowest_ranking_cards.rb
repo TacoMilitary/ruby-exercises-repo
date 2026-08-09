@@ -12,10 +12,10 @@ class Card
   end
 
   def <=>(other_card)
-    if rank == other_card.rank
-      suit_compare_value <=> other_card.suit_compare_value
-    else
+    if suit == other_card.suit
       rank_compare_value <=> other_card.rank_compare_value
+    else
+      suit_compare_value <=> other_card.suit_compare_value
     end
   end
 
