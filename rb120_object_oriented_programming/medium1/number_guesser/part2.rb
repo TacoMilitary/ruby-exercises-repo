@@ -23,11 +23,9 @@ end
 
 # Orchestrator for Gameplay
 class GuessingGame
-  GUESS_RANGE = 2..99
-  INITIAL_GUESSES = 7
-
-  def initialize
+  def initialize(guess_range_lower, guess_range_upper)
     @first_game = true
+    @guess_range = (guess_range_lower..guess_range_upper)
   end
 
   def play
@@ -54,8 +52,8 @@ class GuessingGame
   end
 
   def reset_game
-    @guesses_left = INITIAL_GUESSES
-    @correct_guess = rand(GUESS_RANGE)
+    @guesses_left = Math.log2(guess_range.size).to_i.next
+    @correct_guess = rand(guess_range)
     @player_guess = nil
   end
 
@@ -79,7 +77,7 @@ class GuessingGame
 
   def validate_guess(guess)
     return "That isn't a number!" unless number_str?(guess)
-    return "That's not within range!" unless GUESS_RANGE.include? guess.to_i
+    return "That's not within range!" unless guess_range.include? guess.to_i
   end
 
   def ask_player_guess
@@ -98,7 +96,7 @@ class GuessingGame
   end
 
   def format_range
-    "#{GUESS_RANGE.first - 1} and #{GUESS_RANGE.last + 1}"
+    "#{guess_range.first - 1} and #{guess_range.last + 1}"
   end
 
   def display_guesses
@@ -112,11 +110,9 @@ class GuessingGame
     puts result_message
   end
 
-  attr_reader :correct_guess, :first_game
+  attr_reader :correct_guess, :first_game, :guess_range
   attr_accessor :player_guess, :guesses_left
 end
 
-game = GuessingGame.new
-game.play
-
+game = GuessingGame.new(501, 1500)
 game.play
