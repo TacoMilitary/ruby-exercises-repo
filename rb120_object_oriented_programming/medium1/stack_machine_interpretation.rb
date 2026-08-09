@@ -25,8 +25,10 @@ class Minilang
     @argument = argument
   end
 
-  def eval
-    argument.split.each do |possible_command|
+  def eval(formatting = {})
+    formatted_argument = format(argument, formatting)
+
+    formatted_argument.split.each do |possible_command|
       break if run_command(possible_command) == FAIL_COMMAND
     end
   end
@@ -43,7 +45,7 @@ class Minilang
   end
 
   def divide_by_zero_validation
-    'Cannot divide by 0!' if register.zero?
+    'Cannot divide by 0!' if stack.last.zero?
   end
 
   def run_command_rules(rules)
@@ -129,35 +131,47 @@ class Minilang
   attr_accessor :register
 end
 
-Minilang.new('PRINT').eval
-# 0
+# Further Exploration 1 Test Cases
+CENTIGRADE_TO_FAHRENHEIT =
+  '5 PUSH %<degrees_c>d PUSH 9 MULT DIV PUSH 32 ADD PRINT'
+minilang = Minilang.new(CENTIGRADE_TO_FAHRENHEIT)
+minilang.eval(degrees_c: 100)
+# 212
+minilang.eval(degrees_c: 0)
+# 32
+minilang.eval(degrees_c: -40)
+# -40s
 
-Minilang.new('5 PUSH 3 MULT PRINT').eval
-# 15
-
-Minilang.new('5 PRINT PUSH 3 PRINT ADD PRINT').eval
-# 5
-# 3
-# 8
-
-Minilang.new('5 PUSH 10 PRINT POP PRINT').eval
-# 10
-# 5
-
-Minilang.new('5 PUSH POP POP PRINT').eval
-# Empty stack!
-
-Minilang.new('3 PUSH PUSH 7 DIV MULT PRINT ').eval
-# 6
-
-Minilang.new('4 PUSH PUSH 7 MOD MULT PRINT ').eval
-# 12
-
-Minilang.new('-3 PUSH 5 XSUB PRINT').eval
-# Invalid token: XSUB
-
-Minilang.new('-3 PUSH 5 SUB PRINT').eval
-# 8
-
-Minilang.new('6 PUSH').eval
-# (nothing printed; no PRINT commands)
+# Default Test Cases
+# Minilang.new('PRINT').eval
+# # 0
+# 
+# Minilang.new('5 PUSH 3 MULT PRINT').eval
+# # 15
+# 
+# Minilang.new('5 PRINT PUSH 3 PRINT ADD PRINT').eval
+# # 5
+# # 3
+# # 8
+# 
+# Minilang.new('5 PUSH 10 PRINT POP PRINT').eval
+# # 10
+# # 5
+# 
+# Minilang.new('5 PUSH POP POP PRINT').eval
+# # Empty stack!
+# 
+# Minilang.new('3 PUSH PUSH 7 DIV MULT PRINT ').eval
+# # 6
+# 
+# Minilang.new('4 PUSH PUSH 7 MOD MULT PRINT ').eval
+# # 12
+# 
+# Minilang.new('-3 PUSH 5 XSUB PRINT').eval
+# # Invalid token: XSUB
+# 
+# Minilang.new('-3 PUSH 5 SUB PRINT').eval
+# # 8
+# 
+# Minilang.new('6 PUSH').eval
+# # (nothing printed; no PRINT commands)
