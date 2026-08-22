@@ -1,6 +1,7 @@
 class Card
   include Comparable
 
+  VALUE_OFFSET = 2
   RANK_COMPARE_ORDER = [*(2..10), 'Jack', 'Queen', 'King', 'Ace'].freeze
   SUIT_COMPARE_ORDER = %w[Diamonds Clubs Hearts Spades].freeze
 
@@ -17,6 +18,10 @@ class Card
 
   def to_s
     "#{rank} of #{suit}"
+  end
+
+  def number_value
+    rank_compare_value + VALUE_OFFSET
   end
 
   protected
@@ -59,12 +64,14 @@ class Deck
   attr_accessor :cards
 end
 
-deck = Deck.new
-drawn = []
-52.times { drawn << deck.draw }
-puts drawn.count { |card| card.rank == 5 } == 4
-puts drawn.count { |card| card.suit == 'Hearts' } == 13
+# Test Cases
 
-drawn2 = []
-52.times { drawn2 << deck.draw }
-puts drawn != drawn2 # Almost always.
+# deck = Deck.new
+# drawn = []
+# 52.times { drawn << deck.draw }
+# puts drawn.count { |card| card.rank == 5 } == 4
+# puts drawn.count { |card| card.suit == 'Hearts' } == 13
+# 
+# drawn2 = []
+# 52.times { drawn2 << deck.draw }
+# puts drawn != drawn2 # Almost always.
