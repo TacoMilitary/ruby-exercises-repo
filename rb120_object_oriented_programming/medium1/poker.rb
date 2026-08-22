@@ -85,7 +85,7 @@ class PokerHand
   def cards_in_sequence?
     rank_values = rank_values()
     highest_rank = rank_values.max
-    end_value = highest_rank - 3
+    end_value = highest_rank - 4
     sequence = (end_value..highest_rank)
 
     sequence.all? { |value| rank_values.include? value }
