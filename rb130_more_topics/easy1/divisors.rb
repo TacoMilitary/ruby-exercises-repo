@@ -1,5 +1,7 @@
+require 'benchmark'
+
 def divisors(positive_int)
-  root = positive_int**0.5
+  root = (positive_int**0.5).to_i
   (1..root).each_with_object([]) do |number, divisors|
     next unless (positive_int % number).zero?
     divisors.push(number, positive_int / number)
