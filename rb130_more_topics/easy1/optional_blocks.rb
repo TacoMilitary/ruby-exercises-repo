@@ -1,7 +1,7 @@
-def compute
-  block_given? ? yield : 'Does not compute.'
+def compute(argument)
+  block_given? ? yield(argument) : 'Does not compute.'
 end
 
-p compute { 5 + 3 } == 8
-p compute { 'a' + 'b' } == 'ab'
-p compute == 'Does not compute.'
+p compute(17) { |arg| arg + 5 + 3 } == 25
+p compute('useless argument') { 'a' + 'b' } == 'ab'
+p compute('bruh') == 'Does not compute.'
