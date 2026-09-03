@@ -1,4 +1,4 @@
-# Solution 1
+# Solution 1 (does not work for hashes or sets)
 def map(array)
   Array.new(array.size) { |index| yield(array[index]) }
 end
