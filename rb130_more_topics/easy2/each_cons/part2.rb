@@ -1,10 +1,9 @@
 # Solution 1
 def each_cons(array, group_size = 2)
   index = 0
-  group_index_offset = group_size - 1
 
-  until index >= (array.size - group_index_offset)
-    yield(*array[index..(index + group_index_offset)])
+  until index > (array.size - group_size)
+    yield(*array[index, group_size])
     index += 1
   end
 
