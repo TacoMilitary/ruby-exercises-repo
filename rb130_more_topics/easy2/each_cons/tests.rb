@@ -55,5 +55,27 @@ class EachConsTests < Minitest::Test
     assert_equal({ 1 => 3, 3 => 6, 6 => 10 }, hash)
   end
 
-  
+  def test_triplet_integers
+    each_cons([1, 3, 6, 10], 3) do |value1, *values|
+      hash[value1] = values
+    end
+
+    assert_equal({ 1 => [3, 6], 3 => [6, 10] }, hash)
+  end
+
+  def test_quad_integers
+    each_cons([1, 3, 6, 10], 4) do |value1, *values|
+      hash[value1] = values
+    end
+
+    assert_equal({ 1 => [3, 6, 10] }, hash)
+  end
+
+  def test_too_big_pair
+    each_cons([1, 3, 6, 10], 5) do |value1, *values|
+      hash[value1] = values
+    end
+
+    assert_equal({}, hash)
+  end
 end
