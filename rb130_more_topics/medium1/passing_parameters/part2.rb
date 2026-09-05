@@ -13,3 +13,8 @@ block_parameters(birds) do |*_, hawk, eagle|
   puts 'Here are my cool birds!'
   puts "#{hawk}\n#{eagle}"
 end
+
+block_parameters(birds) do |_, *other_birds, eagle|
+  puts 'Here are my cool birds!'
+  puts "#{other_birds.last}\n#{eagle}"
+end
