@@ -2,13 +2,13 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 Minitest::Reporters.use!
 
-def bubble_sort!(array, &block)
+def bubble_sort!(array)
   loop do
     changes_made = false
 
     (0...array.size.pred).each do |idx|
       slice = array[idx, 2]
-      next if block ? block.call(*slice) : (slice.first <=> slice.last) == -1
+      next if block_given? ? yield(*slice) : slice.first < slice.last
 
       array[idx, 2] = slice.reverse
       changes_made = true
