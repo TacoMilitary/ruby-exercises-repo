@@ -8,7 +8,7 @@ def bubble_sort!(array)
 
     (0...array.size.pred).each do |idx|
       slice = array[idx, 2]
-      next if block_given? ? yield(*slice) : slice.first < slice.last
+      next if block_given? ? yield(*slice) : slice.first <= slice.last
 
       array[idx, 2] = slice.reverse
       changes_made = true
