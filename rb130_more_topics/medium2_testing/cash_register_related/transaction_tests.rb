@@ -14,8 +14,8 @@ class TransactionTest < Minitest::Test
   end
 
   def test_prompt_for_payment
-    amount_to_input = '20'
-    simulated_input = StringIO.new "#{amount_to_input}\n"
+    amount_to_input = "20\n"
+    simulated_input = StringIO.new amount_to_input
     transaction.prompt_for_payment(input: simulated_input, output: StringIO.new)
     assert_equal(amount_to_input.to_f, transaction.amount_paid)
   end
