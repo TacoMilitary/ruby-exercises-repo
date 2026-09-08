@@ -5,15 +5,15 @@ Minitest::Reporters.use!
 require_relative 'text'
 
 class TextTest < Minitest::Test
-  attr_reader :file, :file_text
+  attr_reader :file, :file_text, :text
 
   def setup
     @file = File.open('sample_text.txt')
+    @file_text = file.read.delete("\r")
+    @text = Text.new file_text
   end
 
   def test_replace_a_e
-    text = Text.new(file.read.delete("\r"))
-
     expected = <<~EXPECT.chomp
     Lorem ipsum dolor sit emet, consectetur edipiscing elit. Cres sed vulputete ipsum.
     Suspendisse commodo sem ercu. Donec e nisi elit. Nullem eget nisi commodo, volutpet
@@ -24,6 +24,11 @@ class TextTest < Minitest::Test
     EXPECT
 
     assert_equal(expected, text.swap('a', 'e'))
+  end
+
+  def test_word_count
+    assert_equal(file_text.split.count, text.word_count)
+    assert_equal(72, text.word_count)
   end
 
   def teardown; file.close; end
