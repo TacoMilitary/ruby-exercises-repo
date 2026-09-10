@@ -5,21 +5,17 @@ class Triangle
   BAD_SIDES = 'Must have 3 sides greater than 0.'
 
   def initialize(side1, side2, side3)
-    @sides = [side1, side2, side3]
+    @sides = [side1, side2, side3].sort
     validate_sides
   end
 
   def validate_sides
-    unless sides.size == 3 && sides.all? { |side| side > 0 }
+    unless sides.size == 3 && sides.first > 0
       raise(ArgumentError, BAD_SIDES)
     end
 
-    indices = (0..2).to_a
-    indices.combination(2).each do |combo|
-      third_index = (indices - combo).first
-      unless combo.sum { |index| sides[index] } > sides[third_index]
-        raise(ArgumentError, INEQUALITY_MESSAGE) 
-      end
+    unless sides.first(2).sum > sides.max
+      raise(ArgumentError, INEQUALITY_MESSAGE)
     end
   end
 
